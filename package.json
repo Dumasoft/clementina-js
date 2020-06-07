@@ -1,38 +1,37 @@
 {
-  "name": "clementina",
-  "version": "1.0.0",
-  "description": "Framework javascript",
-  "main": "index.js",
-  "dependencies": {
-    "@types/jasmine": "^3.5.10",
-    "@types/node": "^14.0.11",
-    "jasmine": "^3.5.0",
-    "jasmine-console-reporter": "^3.1.0",
-    "jasmine-core": "^3.5.0",
-    "jasmine-ts": "^0.3.0",
-    "jsdom": "^16.2.2",
-    "nyc": "^15.1.0",
-    "rxjs": "^6.5.5",
-    "ts-node": "^8.10.2"
-  },
-  "devDependencies": {
-    "typescript": "^3.9.5"
-  },
-  "scripts": {
-      "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
-      "coverage": "nyc -r text -e .ts -x \"recursos/*.test.ts\" npm run test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Dumasoft/clementina-js.git"
-  },
-  "keywords": [
-    "Framework"
-  ],
-  "author": "Bruno Gómez García",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Dumasoft/clementina-js/issues"
-  },
-  "homepage": "https://github.com/Dumasoft/clementina-js#readme"
+    "name": "clementina",
+    "version": "1.0.0",
+    "description": "Framework javascript",
+    "main": "index.js",
+    "dependencies": {
+        "typescript": "^3.9.5"
+    },
+    "devDependencies": {
+        "@types/jasmine": "^3.5.10",
+        "@types/node": "^14.0.11",
+        "jasmine": "^3.5.0",
+        "jasmine-console-reporter": "^3.1.0",
+        "jasmine-core": "^3.5.0",
+        "jasmine-ts": "^0.3.0",
+        "jsdom": "^16.2.2",
+        "nyc": "^15.1.0",
+        "ts-node": "^8.10.2"
+    },
+    "scripts": {
+        "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
+        "coverage": "nyc -r text -e .ts -x \"tests/*.test.ts\" npm run test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Dumasoft/clementina-js.git"
+    },
+    "keywords": [
+        "Framework"
+    ],
+    "author": "Bruno Gómez García",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Dumasoft/clementina-js/issues"
+    },
+    "homepage": "https://github.com/Dumasoft/clementina-js#readme"
 }
