@@ -4,19 +4,12 @@ usage() {
 	echo
 	echo 'Uso: ejecutar-test.sh'
 	echo
-	echo '  -a Ejecutar tests unitarios de python y typescript'
 	echo '  -t Ejecutar tests de typescript'
-	echo '  -p Ejecutar tests de python'
 	echo '  -h Ver la ayuda'
 }
 
-test_python() {
-	source venv/bin/activate
-	python manage.py test apps.todo --settings=dumasoft.desarrollo
-}
-
 test_typescript() {
-	npm run coverage
+	npm run test
 }
 
 final_message() {
@@ -44,22 +37,9 @@ case $1 in
 	-h)
 		usage
 		;;
-	-a)
-		change_amd_common
-		test_typescript
-		test_python
-		change_common_amd
-		# final_message
-		;;
 	-t)
 		change_amd_common
 		test_typescript
-		change_common_amd
-		# final_message
-		;;
-	-p)
-		change_amd_common
-		test_python
 		change_common_amd
 		# final_message
 		;;
