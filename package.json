@@ -2,7 +2,7 @@
     "name": "clementina",
     "version": "1.0.0",
     "description": "Framework javascript",
-    "main": "index.js",
+    "main": "index.ts",
     "dependencies": {
         "typescript": "^3.9.5"
     },
