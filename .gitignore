@@ -3,3 +3,4 @@
 /out-tsc
 package-lock.json
 .nyc_output
+tsconfig.json-e

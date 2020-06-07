@@ -1,6 +1,6 @@
-import { IElements } from "../../interfaces/elements/IElements";
-import { ElementsHTML } from "../../enums/html/ElementsHTML";
-import { CustomProgressBar } from "../../enums/html/custom/CustomProgressBar";
+import { IElements } from '../../interfaces/elements/IElements';
+import { ElementsHTML } from '../../enums/html/ElementsHTML';
+import { CustomProgressBar } from '../../enums/html/custom/CustomProgressBar';
 
 export class ProgressBar implements IElements {
     private readonly options: any;

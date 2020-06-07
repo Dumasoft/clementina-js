@@ -1,5 +1,7 @@
 import 'mocha';
 import { expect } from 'chai';
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 import {
     crop,
     deleteClass,
@@ -8,10 +10,7 @@ import {
     hasClass,
     insertClass,
     insertDeleteClass
-} from "../../core/util/functions";
-
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+} from '../../core/base';
 
 describe('Funciones utiles', () => {
     before(() => {

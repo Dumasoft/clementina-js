@@ -1,10 +1,8 @@
 import 'mocha';
 import { expect } from 'chai';
-import { ProgressBar } from "../../core/elements/progress/ProgressBar";
-import { CustomProgressBar } from "../../core/enums/html/custom/CustomProgressBar";
-
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+import { ProgressBar, CustomProgressBar } from '../../core/base';
 
 describe('Progress Bar', () => {
     before(() => {
