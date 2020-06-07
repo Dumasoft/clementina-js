@@ -1,14 +1,24 @@
 import 'mocha';
 import { expect } from 'chai';
-import { crop, existsClass, getTextArray, hasClass } from "../../core/util/functions";
+import {
+    crop,
+    deleteClass,
+    existsClass,
+    getTextArray,
+    hasClass,
+    insertClass,
+    insertDeleteClass
+} from "../../core/util/functions";
 
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 describe('Funciones utiles', () => {
-    beforeEach(() => {
+    before(() => {
         const dom = new JSDOM('<body></body>').window;
         this.document = dom.document;
+        this.div = this.document.createElement('div');
+        this.document.body.appendChild(this.div);
     });
 
     it('Eliminar espacios principio y final', () => {
@@ -34,28 +44,58 @@ describe('Funciones utiles', () => {
 
     it('Existe class en el dom', () => {
         const name = 'class_div';
-        const div = this.document.createElement('div');
-        div.classList.add(name);
-        this.document.body.appendChild(div);
+        this.div.classList.add(name);
+        this.document.body.appendChild(this.div);
         expect(existsClass('.' + name, this.document)).to.equal(true);
     });
 
     it('Tiene class div', () => {
         const nameClass = 'class_div';
-        const div = this.document.createElement('div');
-        div.classList.add(nameClass);
-        expect(hasClass(div, nameClass)).to.equal(true);
+        this.div.classList.add(nameClass);
+        expect(hasClass(this.div, nameClass)).to.equal(true);
     });
 
     it('Insertar class div', () => {
+        const name = 'prueba-insertar';
+        this.div.classList.add(name);
 
+        insertClass('.' + name, 'clase1 clase2', this.document);
+
+        expect(hasClass(this.div, name)).to.equal(true);
+        expect(hasClass(this.div, 'clase1')).to.equal(true);
+        expect(hasClass(this.div, 'clase2')).to.equal(true);
+        expect(hasClass(this.div, 'clase3')).to.equal(false);
     });
 
     it('Eliminar class div', () => {
+        const name = 'prueba-eliminar';
+        this.div.classList.add(name);
 
+        insertClass('.' + name, 'clase1 clase2', this.document);
+
+        expect(hasClass(this.div, name)).to.equal(true);
+
+        expect(hasClass(this.div, 'clase1')).to.equal(true);
+        deleteClass('.' + name, 'clase1', this.document);
+        expect(hasClass(this.div, 'clase1')).to.equal(false);
+
+        expect(hasClass(this.div, 'clase2')).to.equal(true);
+        deleteClass('.' + name, 'clase2', this.document);
+        expect(hasClass(this.div, 'clase2')).to.equal(false);
     });
 
     it('Insertar eliminar class div', () => {
+        const name = 'prueba-eliminar-insertar';
+        this.div.classList.add(name);
 
+        insertDeleteClass('.' + name, 'clase1 clase2', 'insertar', this.document);
+
+        expect(hasClass(this.div, name)).to.equal(true);
+
+        expect(hasClass(this.div, 'clase1')).to.equal(true);
+        expect(hasClass(this.div, 'clase2')).to.equal(true);
+        insertDeleteClass('.' + name, 'clase1 clase2', 'eliminar', this.document);
+        expect(hasClass(this.div, 'clase1')).to.equal(false);
+        expect(hasClass(this.div, 'clase2')).to.equal(false);
     });
 });

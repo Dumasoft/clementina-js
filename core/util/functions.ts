@@ -22,18 +22,20 @@ export function hasClass(element: HTMLElement, clase: string): boolean {
  *
  * @param element
  * @param clases
+ * @param document
  */
-export function insertClass(element: string, clases: string) {
-    insertDeleteClass(element, clases, 'insertar');
+export function insertClass(element: string, clases: string, document: Document) {
+    insertDeleteClass(element, clases, 'insertar', document);
 }
 
 /**
  *
  * @param element
  * @param clases
+ * @param document
  */
-export function deleteClass(element: string, clases: string) {
-    insertDeleteClass(element, clases, 'eliminar');
+export function deleteClass(element: string, clases: string, document: Document) {
+    insertDeleteClass(element, clases, 'eliminar', document);
 }
 
 /**
@@ -41,12 +43,13 @@ export function deleteClass(element: string, clases: string) {
  * @param element
  * @param clases
  * @param action
+ * @param documentCustom
  */
-export function insertDeleteClass(element: string, clases: string, action: string) {
+export function insertDeleteClass(element: string, clases: string, action: string, documentCustom: Document) {
     const arrayClass: Array<string> = clases.split(' ');
 
     arrayClass.forEach((clase: string) => {
-        const elements: NodeListOf<HTMLElement> = document.querySelectorAll(element);
+        const elements: NodeListOf<HTMLElement> = documentCustom.querySelectorAll(element);
 
         elements.forEach(function (item: HTMLElement) {
             (action === 'insertar') ? item.classList.add(clase) : item.classList.remove(clase);
