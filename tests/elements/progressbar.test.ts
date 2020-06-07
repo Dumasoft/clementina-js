@@ -7,7 +7,7 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 describe('Progress Bar', () => {
-    beforeEach(() => {
+    before(() => {
         const dom = new JSDOM().window;
         const document = dom.document;
         const div = dom.document.createElement('div');

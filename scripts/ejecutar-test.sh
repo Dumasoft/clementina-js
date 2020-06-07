@@ -9,6 +9,7 @@ usage() {
 }
 
 test_typescript() {
+    clear
 	npm run test
 }
 
