@@ -1,6 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import {crop, existsClass, getTextArray, hasClass} from "../../core/util/functions";
+import { crop, existsClass, getTextArray, hasClass } from "../../core/util/functions";
 
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
