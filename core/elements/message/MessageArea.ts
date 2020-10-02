@@ -1,7 +1,7 @@
 import { GlobalElement } from '../GlobalElement';
 import { ITypeMessage } from '../../interfaces/elements/ITypeMessage';
 import { IElementsWithMessage } from '../../interfaces/elements/IElementsWithMessage';
-import { CustomMessage, ElementsHTML, CustomGrid, TypeIcon, TypeMessage } from '../../enums/general';
+import { CustomMessage, ElementsHTML, CustomGrid, TypeIcon, TypeMessage } from '../../enums';
 
 export class MessageArea extends GlobalElement implements IElementsWithMessage{
     private readonly types: Array<ITypeMessage>;

@@ -2,7 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-import { ProgressBar, CustomProgressBar } from '../../core/base';
+import { ProgressBar, CustomProgressBar } from '../../core';
 
 describe('Progress Bar', () => {
     before(() => {

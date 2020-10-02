@@ -38,12 +38,22 @@ case $1 in
 	-h)
 		usage
 		;;
+	-a)
+		change_amd_common
+		test_typescript
+		test_python
+		change_common_amd
+		# final_message
+		;;
 	-t)
 		change_amd_common
 		test_typescript
 		change_common_amd
 		# final_message
 		;;
+    *)
+        echo 'ejecuta el script con -h para obtener ayuda'
+        ;;
 esac
 
 

@@ -10,7 +10,7 @@ import {
     hasClass,
     insertClass,
     insertDeleteClass
-} from '../../core/base';
+} from '../../core';
 
 describe('Funciones utiles', () => {
     before(() => {
