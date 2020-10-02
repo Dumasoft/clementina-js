@@ -44,6 +44,9 @@ case $1 in
 		change_common_amd
 		# final_message
 		;;
+    *)
+        echo 'ejecuta el script con -h para obtener ayuda'
+        ;;
 esac
 
 

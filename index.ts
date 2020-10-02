@@ -1,6 +1,6 @@
-import {Observable} from "rxjs/internal/Observable";
+import { Observable } from "rxjs/internal/Observable";
 
-export * from './core/base';
+export * from './core';
 
 function prueba(): Observable<string> {
     return new Observable<string>((observer) => {

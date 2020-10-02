@@ -2,7 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-import { UploadZone, MethodsHttp } from '../../core/base';
+import { UploadZone, MethodsHttp } from '../../core';
 
 describe('Upload Zone', () => {
     beforeEach(() => {

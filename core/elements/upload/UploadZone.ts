@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Subscriber } from 'rxjs/internal/Subscriber';
 import { IElementsWithEvent } from '../../interfaces/elements/IElementsWithEvent';
-import { ElementsHTML, MethodsHttp, CustomGrid, CustomUploadZone } from '../../enums/general';
+import { ElementsHTML, MethodsHttp, CustomGrid, CustomUploadZone } from '../../enums';
 import { GlobalElement } from '../GlobalElement';
 
 export class UploadZone extends GlobalElement implements IElementsWithEvent {
