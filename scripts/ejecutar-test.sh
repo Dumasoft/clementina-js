@@ -55,13 +55,3 @@ case $1 in
         echo 'ejecuta el script con -h para obtener ayuda'
         ;;
 esac
-
-
-
-
-
-
-
-
-
-

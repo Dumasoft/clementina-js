@@ -1,5 +1,5 @@
 export enum TypeIcon {
-    CIRCLE = 'i-circulo-cruzado',
-    CHECKMARK = 'i-checkmark-circulo',
-    WARNING = 'i-advertencia'
+    ERROR = 'fa-bug',
+    SUCCESS = 'fa-check-circle',
+    WARNING = 'fa-engine-warning'
 }
