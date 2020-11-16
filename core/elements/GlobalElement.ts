@@ -1,4 +1,4 @@
-import { IElements } from '../interfaces/elements/IElements';
+import { IElements } from '../interfaces/IElements';
 
 export class GlobalElement implements IElements {
     private readonly options: any;

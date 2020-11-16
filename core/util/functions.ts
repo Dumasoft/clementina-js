@@ -63,7 +63,7 @@ export function insertDeleteClass(element: string, clases: string, action: strin
  * @param {string} text
  * @returns {string} cadena sin espacios en blanco
  */
-export function crop(text) {
+export function crop(text: string): string {
     return text.trim ? text.trim(): text.replace(/^\s+|\s+$/g, '');
 }
 
@@ -73,6 +73,6 @@ export function crop(text) {
  * @param {string} text
  * @returns {string[]}
  */
-export function getTextArray(text) {
+export function getTextArray(text: string): Array<string> {
     return crop(text).split(/\s+/);
 }

@@ -1,6 +1,6 @@
-import { ElementsHTML } from '../../enums/html/ElementsHTML';
-import { CustomProgressBar } from '../../enums/html/custom/CustomProgressBar';
-import { GlobalElement } from '../GlobalElement';
+import { GlobalElement } from "../GlobalElement";
+import { ElementsHTML } from "../../enums/html/ElementsHTML";
+import { CustomProgressBar } from "../../enums/html/custom/CustomProgressBar";
 
 export class ProgressBar extends GlobalElement {
     private bar: HTMLElement;

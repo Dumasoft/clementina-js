@@ -1,14 +1,14 @@
-import { Observable } from 'rxjs';
-import { Subscriber } from 'rxjs/internal/Subscriber';
-import { IElementsWithEvent } from '../../interfaces/elements/IElementsWithEvent';
-import { ElementsHTML, MethodsHttp, CustomGrid, CustomUploadZone } from '../../enums';
-import { GlobalElement } from '../GlobalElement';
+import { GlobalElement } from "../GlobalElement";
+import { IElementsWithEvent } from "../../interfaces/IElementsWithEvent";
+import { CustomUploadZone } from "../../enums/html/custom/CustomUploadZone";
+import { CustomGrid } from "../../enums/html/custom/CustomGrid";
+import { ElementsHTML } from "../../enums/html/ElementsHTML";
 
 export class UploadZone extends GlobalElement implements IElementsWithEvent {
     private readonly files: Array<File> = [];
     private form: HTMLFormElement;
 
-    create(element: HTMLElement): Observable<string> {
+    /*create(element: HTMLElement): Observable<string> {
         this.form = this.getDocument().createElement(ElementsHTML.FORM);
         this.form.setAttribute('method', MethodsHttp.POST);
         this.form.setAttribute('enctype', 'multipart/form-data');
@@ -21,9 +21,9 @@ export class UploadZone extends GlobalElement implements IElementsWithEvent {
         element.appendChild(this.form);
 
         return this.setEvents(div);
-    }
+    }*/
 
-    setEvents(element: HTMLElement): Observable<string> {
+    /*setEvents(element: HTMLElement): Observable<string> {
         return new Observable<string>((observer: Subscriber<string>) => {
             element.ondrop = (event: Event) => {
                 event.preventDefault();
@@ -40,7 +40,7 @@ export class UploadZone extends GlobalElement implements IElementsWithEvent {
                 observer.next('dragleave');
             };
         });
-    }
+    }*/
 
     get(): HTMLElement {
         return this.form;

@@ -1,6 +1,6 @@
 export enum CustomMessage {
     MESSAGE = 'mensaje',
     ICON = 'icono-mensaje',
-    ICONS = 'icos',
+    ICONS = 'fas',
     TEXT = 'texto'
 }
