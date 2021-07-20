@@ -1,0 +1,44 @@
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+}
+
+
+.contenido {
+    height: 80px;
+
+}
+
+.contenido.rojo {
+    background: red;
+}
+.contenido.azul {
+    background: blue;
+}
+.contenido.verde {
+    background: green;
+}
+.contenido.violeta {
+    background: violet;
+}
+
+
+
+.titulo {
+    color: red;
+    font-size: 68px;
+    font-weight: bold;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}

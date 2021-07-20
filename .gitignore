@@ -1,6 +1,8 @@
-/dist
-/tmp
-/out-tsc
+.idea
+dist
+tmp
+out-tsc
 package-lock.json
 .nyc_output
 tsconfig.json-e
+node_modules/
