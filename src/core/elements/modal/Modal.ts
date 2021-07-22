@@ -22,6 +22,7 @@ export class Modal extends GlobalElement {
     private replace_mock(): string {
         return SIMPLE_MODAL
             .replace(ElementModal.ID, this.get_id())
+            .replace(ElementModal.TITLE, this.getOptions().title)
     }
 
     create_event_close_modal() {
