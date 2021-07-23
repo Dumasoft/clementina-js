@@ -12,10 +12,12 @@ export class Layout extends GlobalElement {
     }
 
     private is_dark_mode(): boolean {
-        if (!localStorage.getItem('mode-web')) {
-            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-        } else {
-            return localStorage.getItem('mode-web') === 'dark'
+        if (this.getOptions().check_operation_system) {
+            return window.matchMedia &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches &&
+                !localStorage.getItem('mode-web')
         }
+
+        return localStorage.getItem('mode-web') === 'dark'
     }
 }
