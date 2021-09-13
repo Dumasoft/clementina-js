@@ -8,6 +8,10 @@ export function existsClass(element: string, document: Document): boolean {
     return !!((document.querySelector(element)));
 }
 
+export function existsElementId(element: Element): boolean {
+    return !!element
+}
+
 /**
  *
  * @param element
