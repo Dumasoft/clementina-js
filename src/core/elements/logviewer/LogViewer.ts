@@ -1,9 +1,10 @@
 import { InfoLogFile } from '../../models/InfoLogFile'
 import { BODY_TABLE, LI_FILTER_LOG_FILE } from '../../constants/mocks/MockLog'
 import { ListLog } from '../../models/ListLog'
-import { ColorLevelLog } from '../../enums/logs/ColorLevelLog'
 import { Log } from '../../models/Log'
 import { existsClass } from '../../util/functions'
+import { Paginator } from '../paginator/Paginator'
+import { Color } from '../color/Color'
 
 export class LogViewer {
     private readonly base_url: string
@@ -18,11 +19,17 @@ export class LogViewer {
 
     private filter_level_select = ''
 
+    private paginator: Paginator
+    private color: Color
+
     constructor() {
         this.base_url = window.location.origin
         this.loadFiles()
         this.prepareFilterLevel()
         this.prepareEventsFile()
+
+        this.paginator = new Paginator()
+        this.color = new Color()
     }
 
     loadFiles() {
@@ -37,10 +44,8 @@ export class LogViewer {
                             .replace('--file_name--', log_file.name_file)
                             .replace('--file_name--', log_file.name_file)
                             .replace('--file_url--',  `${url_files_logs}${log_file.name_file}`)
-
                         document.getElementById(this.filter_files)?.appendChild(li)
                         this.createEventLoadLogs(li.querySelector('a')!)
-
                     }
                 })
         }
@@ -50,11 +55,8 @@ export class LogViewer {
         link.addEventListener('click', (event: any) => {
             const name_file = event.target!.getAttribute('data-file-name')
             const url = `${this.base_url}/logs/json/${name_file}`
-
             this.displayLoading(true)
-
             event.target!.innerHTML = `${name_file} <i class="fad fa-dot-circle"></i>`
-
             this.showContentLogTable(url, name_file)
         })
     }
@@ -73,9 +75,20 @@ export class LogViewer {
                     document.getElementById('download-buttons')!.hidden = false
                 }
 
-                if (existsClass('#save-file', document)) {
-                    const save_file = document.getElementById('save-file')!
-                    save_file.setAttribute('data-file-name', name_file)
+                if (existsClass('#multiple-files', document)) {
+                    const save_file: HTMLElement = document.getElementById('multiple-files')!
+                    save_file!.setAttribute(
+                        'href',
+                        `${this.base_url}/logs/download/single-file/`
+                    )
+                }
+
+                if (existsClass('#single-file', document)) {
+                    const save_file: HTMLElement = document.getElementById('single-file')!
+                    save_file!.setAttribute(
+                        'href',
+                        `${this.base_url}/logs/download/single-file/${name_file}`
+                    )
                 }
 
                 if (existsClass('#delete-file', document)) {
@@ -84,21 +97,6 @@ export class LogViewer {
                 }
             })
             .catch((error: any) => console.error(error))
-    }
-
-    getColor(level: string): string {
-        switch (level) {
-            case 'CRITICAL':
-                return ColorLevelLog.CRITICAL
-            case 'ERROR':
-                return ColorLevelLog.ERROR
-            case 'WARNING':
-                return ColorLevelLog.WARNING
-            case 'DEBUG':
-                return ColorLevelLog.DEBUG
-            default:
-                return ColorLevelLog.INFO
-        }
     }
 
     getLogs(): [Log] {
@@ -128,7 +126,7 @@ export class LogViewer {
                 .replace('--level--', items[i].level)
                 .replace('--date--', items[i].date)
                 .replace('--message--', items[i].message)
-                .replace('--color--', this.getColor(items[i].level))
+                .replace('--color--', this.color.getLevel(items[i].level))
             tbody!.appendChild(tr)
         }
         this.setTotalPages(logs!)
@@ -138,6 +136,7 @@ export class LogViewer {
     setTotalPages(logs: [Log]) {
         const element = document.getElementById('changelist-filter')
         this.total_per_page = parseInt(element!.getAttribute('data-items-per-page')!, 10)
+        this.paginator.set_total_pages(Math.ceil(logs!.length / this.total_per_page))
         this.total_pages = Math.ceil(logs!.length / this.total_per_page)
     }
 
@@ -150,81 +149,12 @@ export class LogViewer {
     }
 
     displayPagination(current_page: number, logs: [Log]) {
-        let list_pagination = ''
+        this.paginator.display(current_page, logs!.length)
 
-        if (current_page > 3) {
-            list_pagination += `<a href="javascript:;" data-number-page="1">1</a>`
-        }
-
-        if (current_page === 1) {
-            list_pagination += `<span class="this-page">${current_page}</span>`
-        }
-
-        if (current_page === 2) {
-            list_pagination += `<a href="javascript:;" data-number-page="1">1</a>`
-
-            if (this.total_pages !== 2) {
-                list_pagination += `<span class="this-page">${current_page}</span>`
-            }
-        }
-
-        if (current_page === 3) {
-            list_pagination += `<a href="javascript:;" data-number-page="1">1</a>`
-            list_pagination += `<a href="javascript:;" data-number-page="2"">2</a>`
-
-            if (this.total_pages !== 3) {
-                list_pagination += `<span class="this-page">${current_page}</span>`
-            }
-        }
-
-        if (current_page > 3) {
-            let last = current_page -2
-            list_pagination += ` ... <a href="javascript:;" data-number-page="${last}">${last}</a>`
-            list_pagination += `<a href="javascript:;" data-number-page="${last + 1}">${last + 1}</a>`
-
-            if (current_page < this.total_pages!) {
-                list_pagination += `<span class="this-page">${current_page}</span>`
-            }
-        }
-
-        if (current_page < this.total_pages! -2) {
-            let next = current_page + 1
-            list_pagination += `<a href="javascript:;" data-number-page="${next}">${next}</a>`
-            list_pagination += `<a href="javascript:;" data-number-page="${next + 1}">${next + 1}</a> ... `
-        }
-
-        if (current_page !== this.total_pages! -2) {
-            if (this.total_pages! !== 1) {
-                list_pagination += this.assignPage(this.total_pages!, current_page)
-            }
-        } else {
-            let next = current_page + 1
-            list_pagination += `<a href="javascript:;" data-number-page="${next}">${next}</a>`
-            list_pagination += `<a href="javascript:;" data-number-page="${next + 1}">${next + 1}</a>`
-        }
-
-        list_pagination += ` ${logs!.length} logs `
-
-        if (document.getElementById('navigation-paginator')) {
-            document.getElementById('navigation-paginator')!.innerHTML = list_pagination
-        }
-
-        this.createEventsPaginator()
-    }
-
-    assignPage(current_page: number, compare_page: number) {
-        return (current_page === compare_page) ?
-            `<span class="this-page">${current_page}</span>` :
-            `<a href="javascript:;" data-number-page="${current_page}">${current_page}</a>`
-    }
-
-    createEventsPaginator() {
-        const links = document.querySelectorAll('.paginator a')
-        links.forEach((link: Element) => {
-            link.addEventListener('click', (event: any) => {
-                const page = parseInt(event.target!.getAttribute('data-number-page'), 10)
-                this.createRowTable(page, this.total_per_page || 10)
-            })
+        this.paginator.createEvents((event: any) => {
+            const attribute = event.target!.getAttribute('data-number-page')
+            const page = parseInt(attribute, 10)
+            this.createRowTable(page, this.total_per_page || 10)
         })
     }
 
