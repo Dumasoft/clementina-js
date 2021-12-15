@@ -1,5 +1,5 @@
-import { LogFile } from './LogFile'
-import { Log } from './Log'
+import {LogFile} from './log.file'
+import {Log} from './log'
 
 export interface ListLog {
     current_file: string

@@ -1,10 +1,10 @@
-import { InfoLogFile } from '../../models/InfoLogFile'
-import { BODY_TABLE, LI_FILTER_LOG_FILE } from '../../constants/mocks/MockLog'
-import { ListLog } from '../../models/ListLog'
-import { Log } from '../../models/Log'
-import { existsClass } from '../../util/functions'
-import { Paginator } from '../paginator/Paginator'
-import { Color } from '../color/Color'
+import {InfoLogFile} from '../../models/info.log.file'
+import {BODY_TABLE, LI_FILTER_LOG_FILE} from '../../constants/mocks/mock.log'
+import {ListLog} from '../../models/list.log'
+import {Log} from '../../models/log'
+import {existsClass} from '../../util/functions'
+import {Paginator} from '../paginator/paginator'
+import {Color} from '../color/color'
 
 export class LogViewer {
     private readonly base_url: string

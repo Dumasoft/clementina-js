@@ -1,4 +1,4 @@
-import { LogFile } from './LogFile'
+import {LogFile} from './log.file'
 
 export interface InfoLogFile {
     filename: string

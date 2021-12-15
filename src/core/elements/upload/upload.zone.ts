@@ -1,8 +1,8 @@
-import { GlobalElement } from '../GlobalElement'
-import { IElementsWithEvent } from '../../interfaces/IElementsWithEvent'
-import { ElementsHTML } from '../../enums/html/ElementsHTML'
-import {CustomGrid} from "../../enums/html/custom/CustomGrid";
-import {CustomUploadZone} from "../../enums/html/custom/CustomUploadZone";
+import {GlobalElement} from '../global.element'
+import {IElementsWithEvent} from '../../interfaces/i.elements.with.event'
+import {ElementsHTML} from '../../enums/html/ElementsHTML'
+import {CustomGrid} from "../../enums/html/custom/custom.grid";
+import {CustomUploadZone} from "../../enums/html/custom/custom.upload.zone";
 
 
 export class UploadZone extends GlobalElement implements IElementsWithEvent {

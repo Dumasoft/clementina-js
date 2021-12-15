@@ -1,4 +1,4 @@
-import { Table } from './interfaces/Table';
+import {Table} from './interfaces/table';
 
 export class DataBase {
     connector?: IDBDatabase

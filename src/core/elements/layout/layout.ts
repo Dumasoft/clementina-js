@@ -1,5 +1,5 @@
-import { GlobalElement } from '../GlobalElement'
-import { IOptionsLayout } from '../../interfaces/IOptionsLayout'
+import {GlobalElement} from '../global.element'
+import {IOptionsLayout} from '../../interfaces/i.options.layout'
 
 export class Layout extends GlobalElement {
 

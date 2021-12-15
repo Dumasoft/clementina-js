@@ -1,12 +1,12 @@
-import { GlobalElement } from '../GlobalElement'
-import { ITypeMessage } from '../../interfaces/ITypeMessage'
-import { IElementsWithMessage } from '../../interfaces/IElementsWithMessage'
-import { TypeMessage } from '../../enums/messages/TypeMessage'
-import { TypeIcon } from '../../enums/icons/TypeIcon'
-import { TypeSystemMessages } from '../../enums/events/TypeSystemMessages'
-import { ElementAlert } from '../../enums/elements/ElementAlert'
-import { IOptionsAlert } from '../../interfaces/IOptionsAlert'
-import { NORMAL_ALERT } from '../../constants/mocks/MockAlert'
+import {GlobalElement} from '../global.element'
+import {ITypeMessage} from '../../interfaces/i.type.message'
+import {IElementsWithMessage} from '../../interfaces/i.elements.with.message'
+import {TypeMessage} from '../../enums/messages/type.message'
+import {TypeIcon} from '../../enums/icons/type.icon'
+import {TypeSystemMessages} from '../../enums/events/type.system.messages'
+import {ElementAlert} from '../../enums/elements/element.alert'
+import {IOptionsAlert} from '../../interfaces/i.options.alert'
+import {NORMAL_ALERT} from '../../constants/mocks/mock.alert'
 
 
 export class Alert extends GlobalElement implements IElementsWithMessage {

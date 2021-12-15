@@ -1,6 +1,6 @@
 import {existsClass} from '../../util/functions'
-import {Alert} from "../alert/Alert";
-import {TypeSystemMessages} from "../../enums/events/TypeSystemMessages";
+import {Alert} from "../alert/alert";
+import {TypeSystemMessages} from "../../enums/events/type.system.messages";
 
 export class Contact {
     private readonly base_url: string
@@ -60,7 +60,7 @@ export class Contact {
         const div_loading = document.getElementById('form-contact')
 
         if (button) {
-            button.hidden = show
+            button.style.display = (show) ? 'none' : 'block'
 
             if (div_loading) {
                 if (show) {

@@ -1,4 +1,4 @@
-import { IElements } from './IElements'
+import {IElements} from './i.elements'
 
 
 export interface IElementsWithEvent extends IElements {

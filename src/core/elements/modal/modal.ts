@@ -1,8 +1,8 @@
-import { GlobalElement } from '../GlobalElement'
-import { TypeEvent } from '../../enums/events/TypeEvent'
-import { ElementModal } from '../../enums/elements/ElementModal'
-import { IOptionsModal } from '../../interfaces/IOptionsModal'
-import { SIMPLE_MODAL } from '../../constants/mocks/MockModal'
+import {GlobalElement} from '../global.element'
+import {TypeEvent} from '../../enums/events/type.event'
+import {ElementModal} from '../../enums/elements/element.modal'
+import {IOptionsModal} from '../../interfaces/i.options.modal'
+import {SIMPLE_MODAL} from '../../constants/mocks/mock.modal'
 
 export class Modal extends GlobalElement {
     constructor(options: IOptionsModal, document: Document) {

@@ -1,5 +1,6 @@
-import { MessageArea } from "../../src/core";
-import { TypeSystemMessages } from "../../src/core/enums/events/TypeSystemMessages";
+import {MessageArea} from "../../src/core";
+import {TypeSystemMessages} from "../../src/core/enums/events/type.system.messages";
+
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 

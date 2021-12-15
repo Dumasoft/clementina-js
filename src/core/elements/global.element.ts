@@ -1,5 +1,5 @@
-import { IElements } from '../interfaces/IElements'
-import { get_uuid4 } from '../util/functions'
+import {IElements} from '../interfaces/i.elements'
+import {get_uuid4} from '../util/functions'
 
 
 export class GlobalElement implements IElements {

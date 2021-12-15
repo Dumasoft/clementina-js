@@ -1,6 +1,6 @@
-import {DataBase} from "./core/database/DataBase";
-import {Alert} from "./core/elements/alert/Alert";
-import {TypeSystemMessages} from "./core/enums/events/TypeSystemMessages";
+import {DataBase} from "./core/database/data.base";
+import {Alert} from "./core/elements/alert/alert";
+import {TypeSystemMessages} from "./core/enums/events/type.system.messages";
 
 const tables = {
     name: 'todo',

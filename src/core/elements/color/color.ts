@@ -1,4 +1,4 @@
-import { ColorLevelLog } from '../../enums/logs/ColorLevelLog'
+import {ColorLevelLog} from '../../enums/logs/color.level.log'
 
 export class Color {
     getLevel(level: string) {

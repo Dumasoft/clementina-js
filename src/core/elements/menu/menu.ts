@@ -1,7 +1,7 @@
-import { GlobalElement } from '../GlobalElement'
-import { IOptionsMenu } from '../../interfaces/IOptionsMenu'
-import { TypeEvent } from '../../enums/events/TypeEvent'
-import {ElementMenu} from "../../enums/elements/ElementMenu";
+import {GlobalElement} from '../global.element'
+import {IOptionsMenu} from '../../interfaces/i.options.menu'
+import {TypeEvent} from '../../enums/events/type.event'
+import {ElementMenu} from "../../enums/elements/element.menu";
 
 export class Menu extends GlobalElement {
 

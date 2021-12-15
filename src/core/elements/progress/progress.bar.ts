@@ -1,6 +1,6 @@
-import { GlobalElement } from '../GlobalElement'
-import { ElementsHTML } from '../../enums/html/ElementsHTML'
-import { CustomProgressBar } from '../../enums/html/custom/CustomProgressBar'
+import {GlobalElement} from '../global.element'
+import {ElementsHTML} from '../../enums/html/ElementsHTML'
+import {CustomProgressBar} from '../../enums/html/custom/custom.progress.bar'
 
 export class ProgressBar extends GlobalElement {
     private bar: HTMLElement = this.getDocument().createElement(ElementsHTML.DIV)
