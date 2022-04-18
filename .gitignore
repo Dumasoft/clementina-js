@@ -6,3 +6,4 @@ package-lock.json
 .nyc_output
 tsconfig.json-e
 node_modules/
+.DS_Store

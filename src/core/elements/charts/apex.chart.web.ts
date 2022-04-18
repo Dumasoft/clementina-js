@@ -8,6 +8,9 @@ export class ApexChartWeb {
     start() {
         var options = {
             chart: {
+                toolbar: {
+                    show: false
+                },
                 type: 'line'
             },
             series: [{
@@ -19,8 +22,52 @@ export class ApexChartWeb {
             }
         }
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        var chart = new ApexCharts(document.querySelector("#chart-lines"), options);
 
-        chart.render();
+        chart.render().then();
+    }
+
+    get_evolution() {
+        const element_chart = document.getElementById('chart-evolution')
+
+        if (element_chart) {
+            const categories = eval(element_chart.getAttribute('data-categories')!)
+            const data_created = eval(element_chart.getAttribute('data-tasks-created')!)
+            const data_resolve = eval(element_chart.getAttribute('data-tasks-resolve')!)
+
+            var options = {
+                series: [{
+                    name: 'Tareas resueltas',
+                    data: data_resolve
+                }, {
+                    name: 'Tareas creadas',
+                    data: data_created
+                }],
+                chart: {
+                    toolbar: {
+                        show: false
+                    },
+                    type: 'area'
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                xaxis: {
+                    type: 'date',
+                    categories: categories
+                },
+                tooltip: {
+                    x: {
+                        format: 'dd/MM/yy'
+                    },
+                },
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart-evolution"), options);
+            chart.render().then();
+        }
     }
 }

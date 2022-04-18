@@ -40,7 +40,7 @@ export class GoogleMaps extends GlobalElement {
         }
     }
 
-    private load_events() {
+    load_events() {
         this.event_location_worker()
         this.event_projects()
         this.event_weather()
