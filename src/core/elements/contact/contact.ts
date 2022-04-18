@@ -3,11 +3,15 @@ import {Alert} from "../alert/alert";
 import {TypeSystemMessages} from "../../enums/events/type.system.messages";
 
 export class Contact {
-    private readonly base_url: string
+    private base_url: string
 
     constructor() {
         this.base_url = window.location.origin
         this.createEvents()
+    }
+
+    change_base_url(url: string) {
+        this.base_url = url;
     }
 
     createEvents() {

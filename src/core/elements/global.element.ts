@@ -21,6 +21,10 @@ export class GlobalElement implements IElements {
         throw new Error('Method not implemented.')
     }
 
+    load_events() {
+        throw new Error('Method not implemented.')
+    }
+
     getOptions(): any {
         return this.options
     }
