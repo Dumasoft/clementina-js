@@ -46,6 +46,5 @@ export class ConfigureAdmin {
                 }
             }
         }
-        console.log(field_box)
     }
 }

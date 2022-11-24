@@ -5,7 +5,7 @@ import {ElementMenu} from "../../enums/elements/element.menu";
 
 export class Menu extends GlobalElement {
 
-    constructor(options: IOptionsMenu, document: Document) {
+    constructor(options: IOptionsMenu | null, document: Document) {
         super(options, document)
 
         this.create_event_show_menu()
