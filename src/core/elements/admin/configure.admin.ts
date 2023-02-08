@@ -2,6 +2,7 @@ export class ConfigureAdmin {
     constructor() {
         this.change_icons()
         this.check_input_time()
+        this.load_image()
     }
 
     change_icons() {
@@ -46,6 +47,35 @@ export class ConfigureAdmin {
                 }
             }
         }
-        console.log(field_box)
+    }
+
+    load_image() {
+        const input = document.querySelector('input[type=file]')
+
+        if (input) {
+            const id = input.getAttribute('data-id')
+
+            input.addEventListener('change', () => {
+                console.log('change')
+
+                const reader = new FileReader()
+
+                reader.addEventListener('load', () => {
+                    if (id) {
+                        const image = document.getElementById(id)
+
+                        if (image) {
+                            // @ts-ignore
+                            image.src = reader.result
+                        }
+                    }
+                    console.log(reader.result)
+
+                })
+
+                // @ts-ignore
+                reader.readAsDataURL(input.files[0])
+            })
+        }
     }
 }
