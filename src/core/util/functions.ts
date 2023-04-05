@@ -86,7 +86,20 @@ export function getTextArray(text: string): Array<string> {
  */
 export function get_uuid4(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
+}
+
+export function show_hide_element(content: HTMLElement | null): boolean {
+    if (content) {
+        if (content.style.display === 'none') {
+            content.style.display = 'block'
+            return true
+        } else {
+            content.style.display = 'none'
+        }
+    }
+
+    return false
 }

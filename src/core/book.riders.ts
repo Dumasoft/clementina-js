@@ -5,6 +5,7 @@ import {AccountAdmin} from './elements/account/account.admin'
 import {LogViewer} from './elements/logviewer/log.viewer'
 import {Contact} from './elements/contact/contact'
 import {ConfigureAdmin} from './elements/admin/configure.admin'
+import {Editor} from "./elements/editor/editor";
 
 export class BookRiders {
     constructor(name_app: string) {
@@ -22,6 +23,7 @@ export class BookRiders {
         let contact = new Contact()
         contact.change_base_url('https://dumasoft.io')
         new ConfigureAdmin()
+        new Editor()
     }
 
     // TODO: RECOLOCAR
