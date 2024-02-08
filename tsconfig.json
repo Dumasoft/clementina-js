@@ -9,7 +9,7 @@
         "lib": ["esnext.intl", "dom", "dom.iterable", "esnext"],
         "removeComments": true
     },
-    "files": [
-        "src/index.ts"
+    "include": [
+        "src/**/*.ts"
     ]
 }

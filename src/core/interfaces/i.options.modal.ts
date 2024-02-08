@@ -1,3 +1,5 @@
 export interface IOptionsModal {
-    title: string
+    title: string,
+    message: string,
+    footer: boolean
 }

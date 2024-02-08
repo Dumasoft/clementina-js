@@ -125,3 +125,22 @@ export function getCookie(name: string): string | null {
     return cookieValue;
 }
 
+export function get_csrf(): string {
+    const csrf_input: HTMLInputElement | null = document.querySelector('input[name="csrfmiddlewaretoken"]')
+    return csrf_input ? csrf_input.value : ''
+}
+
+export function get_headers_csrf() {
+    return {
+        'X-CSRFToken': get_csrf(),
+        'X-Requested-With': 'XMLHttpRequest'
+    }
+}
+
+export function get_host(): string {
+    return `${window.location.protocol}//${window.location.host}`
+}
+
+export function get_full_url(url: string): string {
+    return `${get_host()}${url}`
+}

@@ -7,19 +7,22 @@ export const SIMPLE_MODAL = `
             </div>
             <div class="modal--close">
                 <a href="#">
-                    <i class="fas fa-times-circle"></i>
+                    <i class="fa-duotone fa-square-xmark"></i>
                 </a>
             </div>
         </div>
         <div class="modal--content">
-            <p>hola</p>
+            <p>{{ message_modal }}</p>
         </div>
-        <div class="modal--footer">
-            <div class="modal--buttons">
-                <button class="btn btn--secondary">Aceptar</button>
-                <button class="btn btn--secondary">Cancelar</button>
-            </div>
-        </div>
+        {{ footer_modal }}
+    </div>
+</div>
+`
+export const SIMPLE_MODAL_FOOTER = `
+<div class="modal--footer">
+    <div class="modal--buttons">
+        <button class="btn btn--secondary" id="modal-acept">Aceptar</button>
+        <button class="btn btn--secondary" id="modal-cancel">Cancelar</button>
     </div>
 </div>
 `
