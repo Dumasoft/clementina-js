@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1] - 2023-02-08
+## [1.1.0] - 2023-02-08
 ### Changed:
 * Modal edit notes
 
