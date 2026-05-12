@@ -86,7 +86,61 @@ export function getTextArray(text: string): Array<string> {
  */
 export function get_uuid4(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
+}
+
+export function show_hide_element(content: HTMLElement | null): boolean {
+    if (content) {
+        if (content.style.display === 'none') {
+            content.style.display = 'block'
+            return true
+        } else {
+            content.style.display = 'none'
+        }
+    }
+
+    return false
+}
+
+export function getCookie(name: string): string | null {
+    let cookieValue = null;
+    console.log(document.cookie)
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        console.log(cookies)
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+
+                break;
+            }
+        }
+    }
+
+    return cookieValue;
+}
+
+export function get_csrf(): string {
+    const csrf_input: HTMLInputElement | null = document.querySelector('input[name="csrfmiddlewaretoken"]')
+    return csrf_input ? csrf_input.value : ''
+}
+
+export function get_headers_csrf() {
+    return {
+        'X-CSRFToken': get_csrf(),
+        'X-Requested-With': 'XMLHttpRequest'
+    }
+}
+
+export function get_host(): string {
+    return `${window.location.protocol}//${window.location.host}`
+}
+
+export function get_full_url(url: string): string {
+    return `${get_host()}${url}`
 }
