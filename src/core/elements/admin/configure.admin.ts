@@ -15,14 +15,25 @@ export class ConfigureAdmin {
             div.removeChild(image!)
 
             const i = document.createElement('i')
-            i.classList.add('fad')
+
+            i.classList.add('fa-solid')
+
+            // Para borrar el icono de edición con popup
+            const popup = document.querySelector('.related-widget-wrapper-link.change-related');
+            popup?.parentNode?.removeChild(popup)
 
             if (div.classList.contains('change-related')) {
-                i.classList.add('fa-pen-square')
+                i.classList.add('fa-pen')
             }
 
             if (div.classList.contains('add-related')) {
-                i.classList.add('fa-plus-circle')
+                i.classList.add('fa-sharp')
+                i.classList.add('fa-plus')
+            }
+
+            if (div.classList.contains('view-related')) {
+                i.classList.add('fa-duotone')
+                i.classList.add('fa-pen')
             }
 
             div.appendChild(i)
