@@ -7,6 +7,7 @@ import {get_full_url} from '../../util/functions'
 import {INFO_USER} from '../../constants/mocks/mock.info.user'
 import {Modal} from '../modal/modal'
 import {IOptionsModal} from '../../interfaces/i.options.modal'
+import {SIMPLE_MODAL, SIMPLE_MODAL_FOOTER} from "../../constants/mocks/mock.modal";
 
 export class AccountAdmin extends GlobalElement {
     constructor(options: IOptionsMenu | null, document: Document) {
@@ -93,6 +94,8 @@ export class AccountAdmin extends GlobalElement {
                             const options: IOptionsModal = {
                                 title: 'Solicitud enviada',
                                 message: 'La solicitud se ha enviado correctamente, espera a que el usuario acepte tu solicitud.',
+                                mock_modal: SIMPLE_MODAL,
+                                mock_footer: SIMPLE_MODAL_FOOTER,
                                 footer: true
                             }
                             const modal = new Modal(options, document)
@@ -106,6 +109,8 @@ export class AccountAdmin extends GlobalElement {
                             const options: IOptionsModal = {
                                 title: 'Error al enviar la solicitud',
                                 message: 'Error al enviar la solicitud, ponte en contacto con soporte.',
+                                mock_modal: SIMPLE_MODAL,
+                                mock_footer: SIMPLE_MODAL_FOOTER,
                                 footer: true
                             }
                             const modal = new Modal(options, document)

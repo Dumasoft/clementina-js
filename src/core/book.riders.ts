@@ -9,6 +9,7 @@ import {Editor} from './elements/editor/editor';
 import {MDEditor} from "./elements/editor/md.editor";
 import {PanelSelector} from "./elements/panel/panel.selector";
 import {URLS} from "./util/urls";
+import {Book} from "./library/book";
 
 export class BookRiders {
     constructor(name_app: string) {
@@ -21,6 +22,7 @@ export class BookRiders {
         new Menu(null, document)
         new Layout({check_operation_system: false}, document)
         new Note(null, document)
+        new Book(null, document)
         new AccountAdmin({urls: URLS['BOOKRIDERS']}, document)
         new LogViewer()
         let contact = new Contact()

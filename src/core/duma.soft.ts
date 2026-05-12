@@ -6,6 +6,8 @@ import {ApexChartWeb} from "./elements/charts/apex.chart.web";
 import {GoogleMaps} from "./api/maps/google.maps";
 import {Todo} from "./elements/todo/todo";
 import {ConfigureAdmin} from "./elements/admin/configure.admin";
+import {MDEditor} from "./elements/editor/md.editor";
+import {PanelSelector} from "./elements/panel/panel.selector";
 
 export class DumaSoft {
     constructor(name_app: string) {
@@ -24,8 +26,6 @@ export class DumaSoft {
         const chart_principal_dashboard: HTMLCanvasElement = document.getElementById(
             'principal-dashboard'
         ) as HTMLCanvasElement;
-
-
 
         const apex_chart = new ApexChartWeb()
         apex_chart.get_evolution()
@@ -57,5 +57,8 @@ export class DumaSoft {
                 time_24hr: true
             });
         }
+
+        new MDEditor()
+        new PanelSelector()
     }
 }

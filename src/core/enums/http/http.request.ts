@@ -18,31 +18,54 @@ export class HttpRequest {
                 this.content_request,
             )
 
-            if (response.status < 400 || response.status > 599) {
-                return await response.json()
-            } else {
+            if (!response.ok) {
                 throw new Error('Error en la petición')
             }
+
+            if (response.status === 204) {
+                return null
+            }
+
+            return await response.json()
         }
 
         return null
     }
+    
+    prepare_content(data: FormData | Record<string, any> | null = null): any {
+        let body: FormData | null = null
 
-    prepare_content(data: FormData | null = null): any {
-        if (this.method === MethodsHttp.GET) {
-            this.content_request = {
-                method: this.method,
-                headers: get_headers_csrf()
-            }
-        } else {
-            if (data) {
-                data.append('csrfmiddlewaretoken', get_csrf())
-            }
-            this.content_request = {
-                method: this.method,
-                headers: get_headers_csrf(),
-                body: data
-            }
+        if (data instanceof FormData) {
+            body = data
+        } else if (data) {
+            body = this.toFormData(data)
         }
+
+        if (body) {
+            body.append('csrfmiddlewaretoken', get_csrf())
+        }
+
+        const baseConfig: RequestInit = {
+            method: this.method,
+            headers: get_headers_csrf(),
+        }
+
+        if (this.method !== MethodsHttp.GET && this.method !== MethodsHttp.DELETE) {
+            baseConfig.body = body
+        }
+
+        this.content_request = baseConfig
+    }
+
+    private toFormData(data: Record<string, any>): FormData {
+        const formData = new FormData()
+
+        Object.entries(data).forEach(([key, value]) => {
+            if (value !== undefined && value !== null) {
+                formData.append(key, value instanceof Blob ? value : String(value))
+            }
+        })
+
+        return formData
     }
 }
